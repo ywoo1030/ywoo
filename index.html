@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUSE DE YOU · Your Beauty, Your Muse.</title>
+<meta name="description" content="당신만의 아름다움을 발견하고, 자신만의 뮤즈가 되는 순간. MUSE DE YOU 공식 홈페이지">
+<meta name="theme-color" content="#f3e3ec">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="img/icon-192.png">
+<link rel="apple-touch-icon" href="img/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fdfbf8; --pearl:#ffffff; --pink:#f3e3ec; --lav:#ebe4f3; --rose:#d9aac3;
+    --plum:#3a1f2b; --mauve:#7d5a6b; --soft:#9a8a92; --line:#eadfe5;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--plum);line-height:1.7;font-weight:300;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .serif{font-family:'Lora',serif}
+  .eyebrow{font-family:'Lora',serif;font-size:13px;letter-spacing:.25em;text-transform:uppercase;color:var(--mauve)}
+  .pill{display:inline-block;padding:3px 16px;border-radius:20px;background:#efeceb;font-size:13px;color:var(--mauve)}
+
+  /* ---------- 유입 배너 ---------- */
+  #welcome{display:none;background:linear-gradient(90deg,var(--pink),var(--lav));text-align:center;padding:10px 40px;font-size:14px;position:relative;z-index:30}
+  #welcome b{font-weight:500}
+  #welcome button{position:absolute;right:14px;top:8px;background:none;border:0;font-size:18px;cursor:pointer;color:var(--mauve)}
+
+  /* ---------- NAV ---------- */
+  nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;
+      padding:14px 6vw;background:rgba(253,251,248,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Lora',serif;font-size:19px;letter-spacing:.06em}
+  .brand img{width:38px}
+  nav ul{display:flex;gap:26px;list-style:none;font-size:14px}
+  nav ul a:hover{color:var(--rose)}
+  .cart-btn{position:relative;border:1px solid var(--plum);background:none;border-radius:30px;padding:7px 18px;font-size:14px;cursor:pointer;font-family:inherit;color:var(--plum)}
+  .cart-btn span{position:absolute;top:-7px;right:-7px;background:var(--plum);color:#fff;border-radius:50%;width:20px;height:20px;font-size:11px;line-height:20px}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 6vw;overflow:hidden}
+  .orb{position:absolute;border-radius:50%;filter:blur(2px);opacity:.9;z-index:-1}
+  .orb.a{width:46vw;height:46vw;max-width:620px;max-height:620px;left:12%;top:8%;background:radial-gradient(circle at 40% 40%,#f6e1ea,#efe6f2 60%,#eaf6f8);box-shadow:-30px -20px 80px #dff3f6}
+  .orb.b{width:46vw;height:46vw;max-width:620px;max-height:620px;right:12%;top:12%;background:radial-gradient(circle at 60% 60%,#f7e2ea,#f1ecf5 60%,#fdf6f8)}
+  .hero img.mark{width:150px;margin-bottom:10px;animation:float 6s ease-in-out infinite}
+  @keyframes float{50%{transform:translateY(-10px)}}
+  .hero .tag{font-family:'Lora',serif;font-size:20px;color:var(--mauve)}
+  .hero h1{font-family:'Lora',serif;font-weight:400;font-size:clamp(46px,8vw,104px);line-height:1.1;letter-spacing:.02em;margin:6px 0 14px}
+  .hero p{font-size:17px;color:var(--mauve)}
+  .btns{margin-top:34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 34px;border-radius:40px;background:var(--plum);color:#fff;font-size:14px;letter-spacing:.06em;border:1px solid var(--plum);cursor:pointer;font-family:inherit;transition:.3s}
+  .btn:hover{background:var(--mauve);border-color:var(--mauve)}
+  .btn.ghost{background:transparent;color:var(--plum)}
+  .btn.ghost:hover{background:var(--plum);color:#fff}
+
+  section{padding:110px 6vw}
+  .head{text-align:center;margin-bottom:56px}
+  .head h2{font-family:'Lora',serif;font-weight:400;font-size:clamp(32px,4vw,46px);margin:6px 0}
+  .head p{color:var(--soft)}
+
+  /* ---------- CEO ---------- */
+  .ceo{display:grid;grid-template-columns:1fr 1.1fr;gap:6vw;align-items:center}
+  .ceo .photo{border-radius:50%;overflow:hidden;aspect-ratio:1;max-width:480px;justify-self:center;box-shadow:0 30px 60px rgba(217,170,195,.35)}
+  .ceo .photo img{width:100%;height:100%;object-fit:cover}
+  .ceo h3{font-family:'Lora',serif;font-weight:400;font-size:clamp(44px,5vw,64px);margin:10px 0 18px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+  .ceo .lead{font-size:16px;margin-bottom:28px;color:var(--mauve)}
+  .feat{display:flex;gap:18px;margin-bottom:24px}
+  .feat .ic{flex:none;width:54px;height:54px;border-radius:14px;background:#f2f0ef;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:24px}
+  .feat h4{font-family:'Lora',serif;font-weight:400;font-size:21px}
+  .feat p{font-size:14px;color:var(--soft)}
+
+  /* ---------- BRAND ---------- */
+  .brandinfo{background:linear-gradient(180deg,var(--bg),var(--pink))}
+  .bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto}
+  .bcard{background:rgba(255,255,255,.8);border:1px solid var(--line);border-radius:24px;padding:34px}
+  .bcard small{font-family:'Lora',serif;letter-spacing:.12em;font-size:12px;color:var(--soft)}
+  .bcard h4{font-family:'Lora',serif;font-weight:500;font-size:21px;margin-top:6px;color:var(--mauve)}
+  .swatch{display:flex;gap:8px;margin-top:14px}
+  .swatch i{width:30px;height:30px;border-radius:50%;border:1px solid var(--line)}
+
+  /* ---------- SHOP ---------- */
+  .shop{display:grid;grid-template-columns:1.05fr 1fr;gap:5vw;align-items:start;max-width:1200px;margin:0 auto}
+  .shop .pic{border-radius:36px;overflow:hidden;box-shadow:0 30px 60px rgba(125,90,107,.15)}
+  .shop h3{font-family:'Lora',serif;font-weight:400;font-size:clamp(30px,3.4vw,42px);margin:10px 0 2px}
+  .shop .sub{font-family:'Lora',serif;font-style:italic;color:var(--mauve);margin-bottom:22px}
+  .spec{border-top:1px solid var(--line);padding:14px 0}
+  .spec small{font-family:'Lora',serif;letter-spacing:.1em;font-size:12px;color:var(--soft)}
+  .spec div{font-family:'Lora',serif;font-weight:500;color:var(--mauve)}
+  .label{font-size:13px;color:var(--soft);margin:22px 0 8px}
+  .opts{display:grid;gap:10px}
+  .opt{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:14px;padding:14px 18px;cursor:pointer;background:#fff;transition:.2s}
+  .opt:hover{border-color:var(--rose)}
+  .opt.on{border-color:var(--plum);box-shadow:0 0 0 1px var(--plum)}
+  .opt b{font-weight:500}
+  .opt small{display:block;color:var(--soft);font-size:12px}
+  .opt .pr{font-family:'Lora',serif;font-size:17px}
+  .opt .tagx{font-size:11px;background:var(--pink);color:var(--mauve);padding:2px 8px;border-radius:10px;margin-left:6px}
+  .shades{display:flex;gap:10px}
+  .shade{border:1px solid var(--line);border-radius:30px;padding:6px 14px 6px 8px;display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;background:#fff}
+  .shade i{width:20px;height:20px;border-radius:50%}
+  .shade.on{border-color:var(--plum)}
+  .buy{display:flex;gap:10px;margin-top:26px;align-items:center}
+  .qty{display:flex;border:1px solid var(--line);border-radius:30px;overflow:hidden;background:#fff}
+  .qty button{width:38px;border:0;background:none;font-size:18px;cursor:pointer;color:var(--plum)}
+  .qty span{width:34px;text-align:center;line-height:44px}
+  .buy .btn{flex:1}
+
+  /* ---------- STORY / BEFORE-AFTER ---------- */
+  .story{background:#f4f2f1}
+  .ba{display:grid;grid-template-columns:1fr auto 1fr;gap:3vw;align-items:center;max-width:1000px;margin:0 auto}
+  .ba figure{text-align:center}
+  .ba figcaption{font-family:'Lora',serif;color:var(--mauve);margin-top:8px}
+  .arrow{font-size:40px;color:var(--soft)}
+  .reason{max-width:640px;margin:40px auto 0;background:#ebe8e6;border-radius:20px;padding:24px 30px;text-align:center;color:var(--mauve);font-size:15px}
+
+  /* ---------- 유입 경로 ---------- */
+  .route-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1200px;margin:0 auto}
+  .route{border:1px solid var(--line);border-radius:22px;padding:30px 24px;background:#fff;position:relative;transition:.3s}
+  .route:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(217,170,195,.25)}
+  .route .num{font-family:'Lora',serif;font-size:13px;color:var(--soft)}
+  .route .emo{font-size:30px;margin:8px 0}
+  .route h4{font-weight:500;font-size:17px;margin-bottom:6px}
+  .route p{font-size:13.5px;color:var(--soft)}
+  .route a.link{display:inline-block;margin-top:12px;font-size:13px;color:var(--mauve);border-bottom:1px solid var(--mauve)}
+  .insta{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;max-width:900px;margin:60px auto 0;background:#fff;border-radius:28px;padding:30px;border:1px solid var(--line)}
+  .feed{display:grid;grid-template-columns:repeat(3,110px);gap:4px}
+  .feed img{width:110px;height:140px;object-fit:cover}
+  .feed .q{display:flex;align-items:center;justify-content:center;background:#e4e2e2;font-size:12px;text-align:center;padding:8px}
+  .insta h4{font-family:'Lora',serif;font-weight:400;font-size:26px}
+  .insta p{color:var(--soft);font-size:14px;margin:6px 0}
+
+  /* ---------- 수익 구조 ---------- */
+  .biz{background:linear-gradient(180deg,var(--lav),var(--bg))}
+  .flow{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:50px;font-size:14px}
+  .flow div{background:#fff;border:1px solid var(--line);border-radius:30px;padding:10px 20px}
+  .flow span{color:var(--soft)}
+  .rev{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1200px;margin:0 auto}
+  .rev>div{background:#fff;border-radius:22px;padding:28px;border:1px solid var(--line)}
+  .rev .pct{font-family:'Lora',serif;font-size:36px;color:var(--rose)}
+  .rev h4{font-weight:500;margin:4px 0}
+  .rev p{font-size:13.5px;color:var(--soft)}
+  .bar i{display:block}
+  .bar{display:flex;height:14px;border-radius:10px;overflow:hidden;max-width:1200px;margin:30px auto 0}
+
+  /* ---------- APP ---------- */
+  .app{display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center;max-width:1100px;margin:0 auto}
+  .phone{justify-self:center;width:260px;height:520px;border-radius:44px;background:#fff;border:10px solid var(--plum);box-shadow:0 30px 60px rgba(58,31,43,.2);overflow:hidden;display:flex;flex-direction:column}
+  .phone .top{background:linear-gradient(160deg,var(--pink),var(--lav));padding:36px 18px 20px;text-align:center}
+  .phone .top img{width:70px;margin:0 auto}
+  .phone .top b{font-family:'Lora',serif;font-weight:400;display:block;margin-top:4px}
+  .phone .row{margin:10px 14px 0;padding:12px;border-radius:14px;background:var(--bg);font-size:12.5px;border:1px solid var(--line)}
+  .app ul{list-style:none;margin:22px 0}
+  .app li{padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+  .app li b{font-weight:500}
+  .guide{font-size:13px;color:var(--soft);margin-top:16px;background:#f4f2f1;border-radius:14px;padding:14px 18px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--plum);color:#e9dde3;padding:60px 6vw 34px;font-size:13.5px}
+  footer .cols{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  footer .brand{color:#fff}
+  footer .brand img{filter:brightness(1.4)}
+  footer small{display:block;margin-top:34px;opacity:.6;font-size:12px}
+
+  /* ---------- 장바구니 / 결제 ---------- */
+  .dim{position:fixed;inset:0;background:rgba(58,31,43,.35);z-index:40;display:none}
+  .drawer{position:fixed;top:0;right:-440px;width:420px;max-width:100%;height:100%;background:var(--bg);z-index:50;transition:.35s;display:flex;flex-direction:column}
+  .drawer.open{right:0}
+  .drawer header{display:flex;justify-content:space-between;align-items:center;padding:22px 26px;border-bottom:1px solid var(--line)}
+  .drawer header h3{font-family:'Lora',serif;font-weight:400}
+  .x{background:none;border:0;font-size:22px;cursor:pointer;color:var(--plum)}
+  .items{flex:1;overflow:auto;padding:10px 26px}
+  .item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .item img{width:64px;height:64px;object-fit:cover;border-radius:12px}
+  .item .rm{background:none;border:0;color:var(--soft);font-size:12px;cursor:pointer;text-decoration:underline}
+  .empty{text-align:center;color:var(--soft);padding:60px 0}
+  .sum{padding:20px 26px;border-top:1px solid var(--line);font-size:14px}
+  .sum .r{display:flex;justify-content:space-between;margin-bottom:6px}
+  .sum .t{font-size:17px;font-weight:500;margin:10px 0 16px}
+  .sum .btn{width:100%}
+
+  .modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.96);width:520px;max-width:94vw;max-height:92vh;overflow:auto;background:var(--bg);border-radius:26px;z-index:60;padding:32px;display:none;opacity:0;transition:.25s}
+  .modal.open{display:block;opacity:1;transform:translate(-50%,-50%) scale(1)}
+  .modal h3{font-family:'Lora',serif;font-weight:400;font-size:26px;margin-bottom:4px}
+  .steps{display:flex;gap:6px;font-size:12px;color:var(--soft);margin-bottom:20px}
+  .steps b{color:var(--plum);font-weight:500}
+  form label{display:block;font-size:13px;color:var(--mauve);margin:14px 0 6px}
+  form input,form select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font-family:inherit;font-size:14px;background:#fff;color:var(--plum)}
+  form input:focus{outline:none;border-color:var(--rose)}
+  .pay{display:flex;gap:10px}
+  .pay label{flex:1;margin:0;border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center;cursor:pointer;background:#fff;color:var(--plum)}
+  .pay input{display:none}
+  .pay label.on{border-color:var(--plum);box-shadow:0 0 0 1px var(--plum)}
+  .pay label.off{opacity:.45;cursor:not-allowed}
+  .acct{background:linear-gradient(135deg,var(--pink),var(--lav));border-radius:18px;padding:22px;margin:16px 0}
+  .acct .bank{font-size:13px;color:var(--mauve)}
+  .acct .no{font-family:'Lora',serif;font-size:24px;letter-spacing:.04em;margin:4px 0}
+  .acct button{border:1px solid var(--plum);background:#fff;border-radius:20px;padding:4px 14px;font-size:12px;cursor:pointer;font-family:inherit;color:var(--plum)}
+  .info{font-size:13.5px}
+  .info .r{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed var(--line)}
+  .note{font-size:12px;color:var(--soft);margin-top:14px}
+
+  .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(30px);background:var(--plum);color:#fff;padding:12px 24px;border-radius:30px;font-size:14px;z-index:70;opacity:0;transition:.3s;pointer-events:none}
+  .toast.show{opacity:1;transform:translateX(-50%)}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:.9s ease}
+  .reveal.show{opacity:1;transform:none}
+
+  @media(max-width:900px){
+    nav ul{display:none}
+    .ceo,.shop,.app,.ba{grid-template-columns:1fr}
+    .arrow{transform:rotate(90deg);text-align:center}
+    .bgrid,.route-grid,.rev{grid-template-columns:1fr 1fr}
+    .insta{grid-template-columns:1fr;justify-items:center;text-align:center}
+  }
+  @media(max-width:560px){
+    .bgrid,.route-grid,.rev{grid-template-columns:1fr}
+    .feed{grid-template-columns:repeat(3,90px)} .feed img{width:90px;height:115px}
+    section{padding:80px 6vw}
+  }
+</style>
+</head>
+<body>
+
+<!-- 유입 경로별 환영 배너 (?from=instagram 등) -->
+<div id="welcome"><span id="welcomeText"></span><button onclick="this.parentNode.style.display='none'">×</button></div>
+
+<nav>
+  <a href="#" class="brand"><img src="img/logo.png" alt="MDY 로고">MUSE DE YOU</a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#story">Design Story</a></li>
+    <li><a href="#find">Find Us</a></li>
+    <li><a href="#business">Business</a></li>
+    <li><a href="#app">App</a></li>
+  </ul>
+  <button class="cart-btn" onclick="openCart()">Cart <span id="cartCount">0</span></button>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="orb a"></div><div class="orb b"></div>
+  <img class="mark" src="img/logo.png" alt="MUSE DE YOU 로고">
+  <div class="tag">Your Beauty, Your Muse.</div>
+  <h1>MUSE DE YOU</h1>
+  <p>당신만의 아름다움을 발견하고, 자신만의 뮤즈가 되는 순간</p>
+  <div class="btns">
+    <a href="#shop" class="btn">The Dreaming Cushion 구매하기</a>
+    <a href="#app" class="btn ghost">앱 설치하기</a>
+  </div>
+</header>
+
+<!-- CEO -->
+<section id="about">
+  <div class="ceo">
+    <div class="photo reveal"><img src="img/ceo.jpg" alt="MUSE DE YOU 대표 Yui Yun"></div>
+    <div class="reveal">
+      <span class="pill">CEO</span>
+      <h3>Yui Yun</h3>
+      <p class="lead">어릴 때부터 화장품을 사랑한 윤유이는 21살에 대학교를 그만두고 MUSE DE YOU를 시작했어요. 23살인 지금, 그녀의 쿠션은 ‘국민템’이 되었습니다.</p>
+      <div class="feat"><div class="ic">🌙</div><div><h4>A Dream Made Beautiful</h4><p>From a childhood passion to a beauty brand built on her own dreams and determination.</p></div></div>
+      <div class="feat"><div class="ic">💞</div><div><h4>Beauty Begins With You</h4><p>We believe that true beauty begins with embracing who you are and expressing your unique charm.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND -->
+<section class="brandinfo">
+  <div class="head reveal"><div class="eyebrow">Brand Identity</div><h2>Dreamy Beauty, Timeless Elegance</h2><p>What is Your Muse? ✨</p></div>
+  <div class="bgrid">
+    <div class="bcard reveal"><small>BRAND CONCEPT</small><h4>Dreamy Beauty,<br>Timeless Elegance</h4></div>
+    <div class="bcard reveal"><small>TARGET</small><h4>Beauty-Loving Women<br>in Their 20s</h4></div>
+    <div class="bcard reveal"><small>VISUAL IDENTITY</small><h4>Lavender Pink · Pearl White · Soft Lavender</h4>
+      <div class="swatch"><i style="background:#ecc7da"></i><i style="background:#fbf9f7"></i><i style="background:#ddd2ec"></i></div></div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section id="shop">
+  <div class="shop">
+    <div class="pic reveal"><img src="img/cushion.jpg" alt="The Dreaming Cushion"></div>
+    <div class="reveal">
+      <span class="pill">01 · Signature</span>
+      <h3>THE DREAMING CUSHION</h3>
+      <div class="sub">Beauty, Wrapped in a Dream.</div>
+      <div class="spec"><small>DESIGN CONCEPT</small><div>Dreamy Elegance, Inspired by Jewelry</div></div>
+      <div class="spec"><small>SIGNATURE DETAILS</small><div>Pearlescent Pink · Heart Stitch · Jewel Accent</div></div>
+      <div class="spec"><small>COLOR PALETTE</small><div>Lavender Pink · Pearl White · Soft Silver</div></div>
+
+      <div class="label">구성 선택</div>
+      <div class="opts" id="opts"></div>
+
+      <div class="label">컬러 호수</div>
+      <div class="shades" id="shades"></div>
+
+      <div class="buy">
+        <div class="qty"><button onclick="chQty(-1)">−</button><span id="qty">1</span><button onclick="chQty(1)">+</button></div>
+        <button class="btn" onclick="addCart()">장바구니 담기</button>
+        <button class="btn ghost" onclick="buyNow()">바로 구매</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN STORY -->
+<section id="story" class="story">
+  <div class="head reveal"><div class="eyebrow">Design Story</div><h2>Before → After</h2><p>동화 속 공주의 보석함에서 영감을 얻은 시그니처 케이스</p></div>
+  <div class="ba">
+    <figure class="reveal"><img src="img/before.png" alt="처음 디자인"><figcaption>Before Design</figcaption></figure>
+    <div class="arrow">→</div>
+    <figure class="reveal"><img src="img/after.png" alt="최종 디자인"><figcaption>After Design</figcaption></figure>
+  </div>
+  <div class="reason reveal"><b>Reason for Design Changes</b><br>처음 생성된 이미지는 브랜드가 추구하는 분위기와 달라, 원하는 디자인의 방향을 구체적으로 설정한 후 하트 스티치·주얼 장식 등 세부 요소를 반복적으로 수정하였습니다.</div>
+</section>
+
+<!-- 유입 경로 -->
+<section id="find">
+  <div class="head reveal"><div class="eyebrow">How to Find Us</div><h2>뮤즈를 만나는 4가지 길</h2><p>소비자는 이렇게 MUSE DE YOU 홈페이지에 들어와요</p></div>
+  <div class="route-grid">
+    <div class="route reveal"><div class="num">01</div><div class="emo">📸</div><h4>인스타그램</h4><p>@musedeyou.official 피드와 스토리를 보고 프로필 링크를 눌러 들어와요. 인스타에서 오면 첫 구매 10% 쿠폰을 줘요.</p><a class="link" href="?from=instagram#shop">인스타에서 온 화면 보기</a></div>
+    <div class="route reveal"><div class="num">02</div><div class="emo">🎬</div><h4>유튜브 숏츠 · 릴스</h4><p>대표 유이의 ‘Get Ready With Me’ 숏츠 3편. 영상 고정 댓글과 설명란 링크로 바로 쿠션을 구매해요.</p><a class="link" href="?from=shorts#shop">숏츠에서 온 화면 보기</a></div>
+    <div class="route reveal"><div class="num">03</div><div class="emo">💄</div><h4>뷰티 인플루언서 협업</h4><p>20대 뷰티 크리에이터가 리뷰하면서 개인 할인 코드를 공유해요. 코드를 넣으려고 홈페이지를 찾아와요.</p><a class="link" href="?from=influencer#shop">협업 링크로 온 화면 보기</a></div>
+    <div class="route reveal"><div class="num">04</div><div class="emo">🎀</div><h4>팝업스토어 · 패키지 QR</h4><p>성수 팝업스토어와 제품 상자에 있는 QR코드를 찍으면 홈페이지와 앱 설치 화면으로 연결돼요.</p><a class="link" href="?from=qr#app">QR로 온 화면 보기</a></div>
+  </div>
+
+  <div class="insta reveal">
+    <div class="feed">
+      <img src="img/feed1.jpg" alt="인스타그램 게시물">
+      <div class="q">What is your muse?</div>
+      <img src="img/cushion.jpg" alt="쿠션 게시물" style="object-position:center">
+      <img src="img/feed2.jpg" alt="인스타그램 게시물">
+      <img src="img/logo.png" alt="로고 게시물" style="object-fit:contain;background:#fff">
+    </div>
+    <div>
+      <div class="eyebrow">Instagram</div>
+      <h4>MUSE DE YOU Official</h4>
+      <p>@musedeyou.official · 팔로워 1030k</p>
+      <p>#MUSEDEYOU #YourBeautyYourMuse #DreamyBeauty</p>
+      <a class="btn" style="margin-top:12px" href="#" onclick="toast('수업 과제용 가상 계정이에요 🎀');return false;">팔로우하기</a>
+    </div>
+  </div>
+</section>
+
+<!-- 수익 구조 -->
+<section id="business" class="biz">
+  <div class="head reveal"><div class="eyebrow">Business Model</div><h2>MUSE DE YOU는 이렇게 수익을 내요</h2><p>SNS에서 관심을 만들고 → 홈페이지에서 팔고 → 앱으로 다시 오게 해요</p></div>
+  <div class="flow reveal">
+    <div>📸 SNS · 숏츠로 관심</div><span>→</span>
+    <div>🛍 홈페이지에서 첫 구매</div><span>→</span>
+    <div>📱 앱 설치 · 회원가입</div><span>→</span>
+    <div>🔁 리필 정기구독으로 재구매</div>
+  </div>
+  <div class="rev">
+    <div class="reveal"><div class="pct">60%</div><h4>제품 판매</h4><p>홈페이지에서 쿠션 본품·리필·세트를 직접 팔아요. 중간 유통 없이 팔아서 마진이 높아요.</p></div>
+    <div class="reveal"><div class="pct">20%</div><h4>리필 정기구독</h4><p>쿠션은 다 쓰면 리필이 필요해요. 2개월마다 리필을 보내주는 구독으로 꾸준한 수익을 만들어요.</p></div>
+    <div class="reveal"><div class="pct">12%</div><h4>인플루언서 공동구매</h4><p>크리에이터 할인 코드로 팔리면 판매 금액의 일부를 수수료로 나눠요. 홍보비 대신 판매로 연결돼요.</p></div>
+    <div class="reveal"><div class="pct">8%</div><h4>팝업 · 한정판 굿즈</h4><p>팝업스토어 한정 케이스, 파우치 같은 굿즈로 팬을 모으고 추가 수익을 내요.</p></div>
+  </div>
+  <div class="bar reveal"><i style="width:60%;background:#d9aac3"></i><i style="width:20%;background:#c7b6de"></i><i style="width:12%;background:#ecc7da"></i><i style="width:8%;background:#e5dcd3"></i></div>
+</section>
+
+<!-- APP -->
+<section id="app">
+  <div class="app">
+    <div class="phone reveal">
+      <div class="top"><img src="img/logo.png" alt=""><b>MUSE DE YOU</b><small>Your Beauty, Your Muse.</small></div>
+      <div class="row">🎁 앱 첫 설치 쿠폰 <b>3,000원</b></div>
+      <div class="row">🔁 다음 리필 배송일 · D-12</div>
+      <div class="row">💄 나에게 맞는 호수 찾기</div>
+      <div class="row">✨ 신제품 · 팝업 알림</div>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">MUSE DE YOU App</div>
+      <h2 class="serif" style="font-weight:400;font-size:clamp(30px,3.6vw,44px);margin:8px 0">앱으로 더 가까이,<br>나만의 뮤즈를 매일.</h2>
+      <ul>
+        <li>🎁 <b>앱 전용 쿠폰</b> — 설치하면 바로 3,000원 할인</li>
+        <li>🔁 <b>리필 정기구독 관리</b> — 배송일 변경·건너뛰기</li>
+        <li>🔔 <b>신제품 · 팝업 소식</b> — 가장 먼저 알림</li>
+        <li>⚡ <b>홈 화면에서 바로 실행</b> — 앱스토어 없이 설치</li>
+      </ul>
+      <button class="btn" id="installBtn" onclick="installApp()">📲 MUSE DE YOU 앱 설치하기</button>
+      <div class="guide" id="installGuide">
+        <b>설치 방법</b><br>
+        · <b>안드로이드 / PC 크롬</b>: 위 버튼을 누르면 바로 설치돼요.<br>
+        · <b>아이폰(사파리)</b>: 아래 <b>공유 버튼</b> → <b>‘홈 화면에 추가’</b>를 눌러주세요.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="cols">
+    <div><a class="brand" href="#"><img src="img/logo.png" alt="">MUSE DE YOU</a><p style="margin-top:10px">Your Beauty, Your Muse.</p></div>
+    <div><p>(주)뮤즈드유 · 대표 윤유이(Yui Yun)</p><p>Instagram @musedeyou.official</p><p>고객센터 평일 10:00–17:00</p></div>
+  </div>
+  <small>※ 본 홈페이지는 수업 과제(2025101727 김연우)로 제작한 가상 브랜드이며, 실제 판매·결제는 이루어지지 않습니다. 이미지: ChatGPT 이미지 생성.</small>
+</footer>
+
+<!-- 장바구니 -->
+<div class="dim" id="dim" onclick="closeAll()"></div>
+<aside class="drawer" id="drawer">
+  <header><h3>Shopping Bag</h3><button class="x" onclick="closeAll()">×</button></header>
+  <div class="items" id="items"></div>
+  <div class="sum" id="sum"></div>
+</aside>
+
+<!-- 결제 모달 -->
+<div class="modal" id="checkout">
+  <button class="x" style="float:right" onclick="closeAll()">×</button>
+  <h3>Checkout</h3>
+  <div class="steps"><b>① 주문정보</b> › <span id="st2">② 계좌이체 안내</span></div>
+  <div id="formWrap">
+    <form id="orderForm" onsubmit="placeOrder(event)">
+      <label>받는 분 이름</label><input name="name" required placeholder="홍길동">
+      <label>연락처</label><input name="phone" required placeholder="010-0000-0000" pattern="[0-9\-]{10,13}">
+      <label>배송 주소</label><input name="addr" required placeholder="서울시 ○○구 ○○로 00">
+      <label>입금자명 (이름과 다를 경우)</label><input name="payer" placeholder="비우면 받는 분 이름으로 해요">
+      <label>할인 코드</label><input name="code" id="codeInput" placeholder="예: MUSE10">
+      <label>결제 수단</label>
+      <div class="pay">
+        <label class="on"><input type="radio" name="pay" checked>🏦 무통장 계좌이체</label>
+        <label class="off" title="준비 중">💳 카드 (준비 중)</label>
+      </div>
+      <div class="info" id="formSum" style="margin-top:18px"></div>
+      <button class="btn" style="width:100%;margin-top:20px">주문하고 입금 계좌 받기</button>
+    </form>
+  </div>
+  <div id="doneWrap" style="display:none"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------------- 상품 데이터 ---------------- */
+const OPTIONS = [
+  {id:'main',  name:'드리밍 쿠션 본품',         desc:'본품 15g + 퍼프 1개',              price:38000},
+  {id:'set',   name:'본품 + 리필 세트',          desc:'본품 15g + 리필 15g + 퍼프 2개',   price:54000, tag:'BEST'},
+  {id:'refill',name:'리필 단품',                 desc:'리필 15g + 퍼프 1개',              price:22000},
+  {id:'sub',   name:'리필 정기구독 (2개월마다)', desc:'리필 15g · 매회 10% 할인 · 언제든 해지', price:19800, tag:'구독'}
+];
+const SHADES = [{n:'17 Pearl',c:'#f4ddd0'},{n:'21 Petal',c:'#ecd0bd'},{n:'23 Silk',c:'#e0c0a6'}];
+const CODES = {MUSE10:{rate:.10,label:'인스타그램 첫 구매 10%'}, SHORTS10:{rate:.10,label:'숏츠 시청자 10%'}, YUI15:{rate:.15,label:'인플루언서 협업 15%'}, APP3000:{won:3000,label:'앱 설치 쿠폰'}};
+let sel = OPTIONS[1], shade = SHADES[1], qty = 1;
+let cart = [];
+try{ cart = JSON.parse(localStorage.getItem('mdy_cart')||'[]'); }catch(e){}
+
+const won = n => '₩' + n.toLocaleString('ko-KR');
+const $ = id => document.getElementById(id);
+
+function renderOpts(){
+  $('opts').innerHTML = OPTIONS.map(o=>`
+    <div class="opt ${o===sel?'on':''}" onclick="pick('${o.id}')">
+      <div><b>${o.name}</b>${o.tag?`<span class="tagx">${o.tag}</span>`:''}<small>${o.desc}</small></div>
+      <div class="pr">${won(o.price)}</div>
+    </div>`).join('');
+  $('shades').innerHTML = SHADES.map((s,i)=>`
+    <div class="shade ${s===shade?'on':''}" onclick="pickShade(${i})"><i style="background:${s.c}"></i>${s.n}</div>`).join('');
+}
+function pick(id){ sel = OPTIONS.find(o=>o.id===id); renderOpts(); }
+function pickShade(i){ shade = SHADES[i]; renderOpts(); }
+function chQty(d){ qty = Math.max(1, Math.min(9, qty+d)); $('qty').textContent = qty; }
+
+/* ---------------- 장바구니 ---------------- */
+function save(){ try{ localStorage.setItem('mdy_cart', JSON.stringify(cart)); }catch(e){} $('cartCount').textContent = cart.reduce((a,b)=>a+b.qty,0); }
+function addCart(silent){
+  const key = sel.id+'|'+shade.n;
+  const f = cart.find(c=>c.key===key);
+  if(f) f.qty += qty; else cart.push({key, name:sel.name, shade:shade.n, price:sel.price, qty});
+  save(); if(!silent) toast('장바구니에 담았어요 🎀');
+}
+function buyNow(){ addCart(true); openCheckout(); }
+function removeItem(i){ cart.splice(i,1); save(); renderCart(); }
+function subtotal(){ return cart.reduce((a,c)=>a+c.price*c.qty,0); }
+function shipping(s){ return s===0||s>=30000 ? 0 : 3000; }
+
+function renderCart(){
+  if(!cart.length){ $('items').innerHTML='<div class="empty">장바구니가 비어 있어요</div>'; $('sum').innerHTML=''; return; }
+  $('items').innerHTML = cart.map((c,i)=>`
+    <div class="item"><img src="img/cushion.jpg" alt="">
+      <div style="flex:1"><b style="font-weight:500">${c.name}</b><br><span style="color:var(--soft)">${c.shade} · ${c.qty}개</span><br>
+      <button class="rm" onclick="removeItem(${i})">삭제</button></div>
+      <div>${won(c.price*c.qty)}</div></div>`).join('');
+  const s = subtotal(), sh = shipping(s);
+  $('sum').innerHTML = `<div class="r"><span>상품 금액</span><span>${won(s)}</span></div>
+    <div class="r"><span>배송비</span><span>${sh?won(sh):'무료'}</span></div>
+    <div class="r t"><span>합계</span><span>${won(s+sh)}</span></div>
+    <button class="btn" onclick="openCheckout()">계좌이체로 주문하기</button>
+    <p class="note">3만원 이상 무료배송</p>`;
+}
+function openCart(){ renderCart(); $('dim').style.display='block'; $('drawer').classList.add('open'); }
+function closeAll(){ $('dim').style.display='none'; $('drawer').classList.remove('open'); $('checkout').classList.remove('open'); }
+
+/* ---------------- 결제 (계좌이체) ---------------- */
+function calc(){
+  const s = subtotal(); const code = ($('codeInput').value||'').trim().toUpperCase(); const c = CODES[code];
+  let dc = 0; if(c) dc = c.rate ? Math.round(s*c.rate/10)*10 : Math.min(c.won, s);
+  const sh = shipping(s); return {s, dc, sh, total:s-dc+sh, c, code};
+}
+function renderFormSum(){
+  const k = calc();
+  $('formSum').innerHTML = `<div class="r"><span>상품 금액</span><span>${won(k.s)}</span></div>
+   <div class="r"><span>할인 ${k.c?'('+k.c.label+')':''}</span><span>${k.dc?'−'+won(k.dc):'-'}</span></div>
+   <div class="r"><span>배송비</span><span>${k.sh?won(k.sh):'무료'}</span></div>
+   <div class="r" style="font-weight:500;font-size:16px"><span>최종 결제 금액</span><span>${won(k.total)}</span></div>`;
+}
+function openCheckout(){
+  if(!cart.length){ toast('먼저 상품을 담아주세요'); return; }
+  $('drawer').classList.remove('open'); $('dim').style.display='block';
+  $('formWrap').style.display='block'; $('doneWrap').style.display='none'; $('st2').style.fontWeight='';
+  const pre = sessionStorage.getItem('mdy_code'); if(pre && !$('codeInput').value) $('codeInput').value = pre;
+  renderFormSum(); $('checkout').classList.add('open');
+}
+$('codeInput').addEventListener('input', renderFormSum);
+
+function placeOrder(e){
+  e.preventDefault();
+  const f = new FormData(e.target), k = calc();
+  const d = new Date(), due = new Date(d.getTime()+24*3600*1000);
+  const no = 'MDY' + d.getFullYear() + String(d.getMonth()+1).padStart(2,'0') + String(d.getDate()).padStart(2,'0') + '-' + Math.floor(1000+Math.random()*9000);
+  const payer = f.get('payer') || f.get('name');
+  const fmt = t => `${t.getMonth()+1}월 ${t.getDate()}일 ${String(t.getHours()).padStart(2,'0')}:${String(t.getMinutes()).padStart(2,'0')}`;
+  $('formWrap').style.display='none'; $('st2').innerHTML='<b>② 계좌이체 안내</b>';
+  $('doneWrap').style.display='block';
+  $('doneWrap').innerHTML = `
+    <p style="font-size:15px">🎀 <b style="font-weight:500">${f.get('name')}</b>님, 주문이 접수되었어요!<br>아래 계좌로 입금하시면 주문이 완료돼요.</p>
+    <div class="acct">
+      <div class="bank">뮤즈은행 (예시 계좌)</div>
+      <div class="no" id="acctNo">1030-2025-1727</div>
+      <div style="font-size:13px;margin-bottom:10px">예금주 (주)뮤즈드유</div>
+      <button onclick="copyAcct()">계좌번호 복사</button>
+    </div>
+    <div class="info">
+      <div class="r"><span>주문번호</span><span>${no}</span></div>
+      <div class="r"><span>입금하실 금액</span><b style="font-weight:500">${won(k.total)}</b></div>
+      <div class="r"><span>입금자명</span><span>${payer}</span></div>
+      <div class="r"><span>입금 기한</span><span>${fmt(due)}까지</span></div>
+      <div class="r"><span>배송지</span><span style="text-align:right;max-width:60%">${f.get('addr')}</span></div>
+    </div>
+    <p class="note">· 입금자명과 금액이 같아야 자동으로 확인돼요.<br>· 기한 안에 입금하지 않으면 주문이 자동 취소돼요.<br>· 입금이 확인되면 문자로 알려드리고 1~2일 안에 출발해요.<br>· 수업 과제용 가상 결제 화면이라 실제로 입금하지 마세요.</p>
+    <button class="btn" style="width:100%;margin-top:18px" onclick="finish()">확인</button>`;
+}
+function copyAcct(){
+  const t = '뮤즈은행 1030-2025-1727 (주)뮤즈드유';
+  (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(()=>toast('계좌번호를 복사했어요'), ()=>toast(t));
+}
+function finish(){ cart=[]; save(); $('orderForm').reset(); closeAll(); toast('주문해 주셔서 감사해요 💗'); }
+
+/* ---------------- 유입 경로별 환영 메시지 ---------------- */
+const ROUTES = {
+  instagram:{msg:'📸 인스타그램에서 오셨군요! 첫 구매 <b>10% 할인 코드 MUSE10</b>이 자동으로 들어가요', code:'MUSE10'},
+  shorts:   {msg:'🎬 유이의 GRWM 숏츠 보고 오셨군요! <b>시청자 10% 코드 SHORTS10</b>이 자동으로 들어가요', code:'SHORTS10'},
+  influencer:{msg:'💄 크리에이터 추천으로 오셨군요! <b>협업 15% 코드 YUI15</b>이 자동으로 들어가요', code:'YUI15'},
+  qr:       {msg:'🎀 패키지 QR로 오셨군요! 앱을 설치하면 <b>3,000원 쿠폰 APP3000</b>을 드려요', code:'APP3000'}
+};
+const from = new URLSearchParams(location.search).get('from');
+if(ROUTES[from]){
+  $('welcomeText').innerHTML = ROUTES[from].msg; $('welcome').style.display='block';
+  sessionStorage.setItem('mdy_code', ROUTES[from].code);
+}
+
+/* ---------------- 앱 설치 (PWA) ---------------- */
+let deferred = null;
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js').catch(()=>{}); }
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferred = e; });
+window.addEventListener('appinstalled', () => { toast('앱이 설치되었어요! 홈 화면을 확인해 보세요 🎀'); $('installBtn').textContent='✓ 설치 완료'; });
+if(window.matchMedia('(display-mode: standalone)').matches){ $('installBtn').textContent='✓ 앱으로 보는 중이에요'; }
+function installApp(){
+  if(deferred){ deferred.prompt(); deferred.userChoice.finally(()=>deferred=null); return; }
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  toast(ios ? '사파리 아래쪽 공유 버튼 → ‘홈 화면에 추가’를 눌러주세요' : '브라우저 주소창 오른쪽의 설치 아이콘을 눌러주세요');
+  $('installGuide').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+/* ---------------- 기타 ---------------- */
+let tt; function toast(m){ const t=$('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove('show'),2600); }
+const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); }),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+renderOpts(); save();
+</script>
+</body>
+</html>

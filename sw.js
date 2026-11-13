@@ -1,5 +1,5 @@
 const CACHE = 'mdy-v1';
-const FILES = ['./', './index.html', './manifest.json', './img/logo.png', './img/ceo.jpg', './img/cushion.jpg', './img/icon-192.png', './img/icon-512.png'];
+const FILES = ['./', './index.html', './manifest.json', './logo.png', './ceo.jpg', './cushion.jpg', './icon-192.png', './icon-512.png'];
 self.addEventListener('install', e => e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting())));
 self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
 self.addEventListener('fetch', e => {

@@ -286,6 +286,10 @@
   .lightbox img{max-width:100%;max-height:92vh;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
   .lightbox .lbx{position:absolute;top:18px;right:24px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.9);font-size:24px;line-height:44px;color:#3a1a2b;cursor:pointer}
   @keyframes lbIn{from{opacity:0}to{opacity:1}}
+
+  .film{text-align:center}
+  .filmbox{max-width:1100px;margin:46px auto 0;border-radius:32px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 30px 70px rgba(229,185,239,.3)}
+  .filmbox video{width:100%;display:block;aspect-ratio:16/9;background:#fbf4fb}
 </style>
 </head>
 <body>
@@ -301,6 +305,7 @@
     <li><a href="#find">Find Us</a></li>
     <li><a href="#business">Business</a></li>
     <li><a href="#app">App</a></li>
+    <li><a href="#film">Film</a></li>
   </ul>
   <button class="bag" onclick="openCart()">Bag <span id="cartCount">0</span></button>
 </nav>
@@ -550,6 +555,18 @@
         · 안드로이드 / PC 크롬: 위 버튼을 누르면 바로 설치돼요.<br>
         · 아이폰(사파리): 아래 <b style="font-weight:500">공유 버튼</b> → <b style="font-weight:500">‘홈 화면에 추가’</b>를 눌러주세요.
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND FILM -->
+<section id="film" class="film">
+  <div class="wrap">
+    <span class="pill rv">Brand Film</span>
+    <h2 class="rv" style="font-family:'Lora',serif;font-weight:400;font-size:clamp(32px,3.6vw,46px);margin:14px 0 8px">Meet Your Muse</h2>
+    <p class="rv" style="color:var(--sub)">15초로 만나는 MUSE DE YOU와 드리밍 쿠션</p>
+    <div class="filmbox rv">
+      <video src="promo.mp4" poster="promo_poster.jpg" controls playsinline preload="metadata"></video>
     </div>
   </div>
 </section>

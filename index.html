@@ -239,6 +239,45 @@
     .graycard{padding:30px}
     .orb{width:70vw}
   }
+
+  /* ===== 네임 리본 선물 포장 ===== */
+  .gift{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+  .giftwrap{display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center}
+  .giftbox{background:#fff;border:1px solid var(--line);border-radius:40px;padding:30px;box-shadow:0 26px 60px rgba(229,185,239,.28)}
+  .giftbox svg{width:100%;display:block}
+  .gift h2{font-family:'Lora',serif;font-weight:400;font-size:clamp(32px,3.6vw,46px);line-height:1.2;margin:14px 0 10px}
+  .gift .lead{color:var(--sub);font-size:15px;margin-bottom:26px}
+  .namein{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+  .namein input{flex:1;padding:14px 18px;border:1px solid var(--line);border-radius:30px;font-family:'Lora',serif;font-size:17px;background:#fff;color:var(--ink)}
+  .namein input:focus{outline:none;border-color:var(--hot);box-shadow:0 0 0 3px var(--pink)}
+  .gift .hint{font-size:12.5px;color:var(--muted);margin:0 0 26px 6px}
+  .giftlist{list-style:none;margin-bottom:28px}
+  .giftlist li{display:flex;gap:14px;padding:13px 0;border-top:1px solid var(--line);font-size:14.5px}
+  .giftlist li b{font-weight:500;min-width:96px}
+  .giftlist li span{color:var(--sub)}
+  .giftprice{font-family:'Lora',serif;font-size:22px;margin-bottom:18px}
+  .giftprice small{font-size:13px;color:var(--muted);margin-left:8px;font-family:'Noto Sans KR',sans-serif}
+  .giftopt{border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-top:14px;background:#fff}
+  .giftopt .chk{display:flex;align-items:center;gap:10px;margin:0;font-size:14px;color:var(--ink);cursor:pointer}
+  .giftopt .chk input{width:18px;height:18px;accent-color:#c98ad8}
+  .giftmore{display:none;margin-top:6px}
+  .giftmore.show{display:block}
+  .giftmore textarea{width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:14px;font-family:inherit;font-size:14px;resize:none;height:72px;color:var(--ink)}
+  @media(max-width:900px){ .giftwrap{grid-template-columns:1fr} }
+
+  .pkrow{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+  .pkcard{background:#fff;border:1px solid var(--line);border-radius:36px;padding:26px 26px 22px;box-shadow:0 24px 56px rgba(229,185,239,.22)}
+  .pkcard svg{width:100%;display:block}
+  .pkphoto{width:100%;display:block;border-radius:24px;height:auto}
+  .ribprev{display:inline-block;margin:6px 0 16px;padding:8px 22px;background:#fbf4e8;border:1px solid #e8dcc8;color:#8e8a96;font-family:'Lora',serif;font-style:italic;font-size:17px;border-radius:4px}
+  .pkcard figcaption{font-size:13.5px;color:var(--sub);text-align:center;margin-top:8px}
+  .pkcard figcaption b{display:block;font-family:'Lora','Noto Sans KR',serif;font-weight:500;color:var(--ink);font-size:15px;margin-bottom:2px}
+  .pkinfo{display:grid;grid-template-columns:1fr 1fr;gap:6vw;margin-top:56px;align-items:start}
+  .namebox{background:#fff;border:1px solid var(--line);border-radius:30px;padding:30px 32px}
+  .namebox h3{font-family:'Lora','Noto Sans KR',serif;font-weight:400;font-size:22px;margin:8px 0 6px}
+  .namebox h3 small{font-size:14px;color:var(--muted);margin-left:6px}
+  .namebox p{font-size:14px;color:var(--sub);margin-bottom:16px}
+  @media(max-width:900px){ .pkrow,.pkinfo{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
@@ -250,6 +289,7 @@
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#shop">Shop</a></li>
+    <li><a href="#gift">Packaging</a></li>
     <li><a href="#find">Find Us</a></li>
     <li><a href="#business">Business</a></li>
     <li><a href="#app">App</a></li>
@@ -323,6 +363,73 @@
       </div>
     </div>
     <div class="pimg rv"><img src="cushion.jpg" alt="THE DREAMING CUSHION"></div>
+  </div>
+</section>
+
+<!-- PACKAGE -->
+<section id="gift" class="gift">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:56px">
+      <span class="pill rv">Packaging</span>
+      <h2 class="rv" style="font-family:'Lora',serif;font-weight:400;font-size:clamp(32px,3.6vw,46px);margin:14px 0 8px">This is How It Arrives</h2>
+      <p class="rv" style="color:var(--sub)">문을 열기 전부터 설레도록, 앤티크한 화이트 박스에 담아 보내드려요.</p>
+    </div>
+
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="orn" viewBox="0 0 60 60">
+          <path d="M4 56 V22 C4 10 10 4 22 4 H56" fill="none" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M10 56 V26 C10 16 16 10 26 10 H56" fill="none" stroke="currentColor" stroke-width=".7"/>
+          <path d="M22 4 C18 12 24 18 30 14 C34 11 31 6 27 8" fill="none" stroke="currentColor" stroke-width="1"/>
+          <path d="M4 22 C12 18 18 24 14 30 C11 34 6 31 8 27" fill="none" stroke="currentColor" stroke-width="1"/>
+          <path d="M17 17 C22 22 26 20 26 16 M17 17 C22 12 20 9 16 10" fill="none" stroke="currentColor" stroke-width=".9"/>
+          <circle cx="17" cy="17" r="1.6" fill="currentColor"/>
+          <path d="M34 4 q4 -3 8 0 M4 34 q-3 4 0 8" fill="none" stroke="currentColor" stroke-width=".8"/>
+        </symbol>
+        <linearGradient id="pkLid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbe9f6"/><stop offset="1" stop-color="#f4dcef"/></linearGradient>
+        <linearGradient id="pkWhite" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f7f1f8"/></linearGradient>
+        <linearGradient id="pkSide" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3ecf5"/><stop offset="1" stop-color="#e9dfee"/></linearGradient>
+        <linearGradient id="ckCase" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fdfbff"/><stop offset=".5" stop-color="#e3dde9"/><stop offset="1" stop-color="#f6f2f8"/></linearGradient>
+        <linearGradient id="ckTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#f8dcec"/><stop offset="1" stop-color="#eebcd8"/></linearGradient>
+        <linearGradient id="ribbonG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#f6eef8"/><stop offset="1" stop-color="#ffffff"/></linearGradient>
+        <pattern id="quilt" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0H16M0 0V16" stroke="#fff" stroke-width="1.1" stroke-dasharray="2.2 2.2"/></pattern>
+        <clipPath id="ckClip"><ellipse cx="0" cy="0" rx="92" ry="52"/></clipPath>
+      </defs>
+    </svg>
+
+    <div class="pkrow">
+      <!-- 닫힌 박스 -->
+      <figure class="pkcard rv">
+        <img src="box_closed.jpg" alt="뮤즈 드 유 화이트 앤티크 박스" class="pkphoto">
+        <figcaption><b>01 · 받았을 때</b>리본 없이 깔끔한 화이트 앤티크 박스. 가운데에 실버 펄 박으로 찍은 MDY 로고</figcaption>
+      </figure>
+
+      <!-- 열린 박스 -->
+      <figure class="pkcard rv">
+        <img src="box_open.jpg" alt="박스를 연 모습: 핑크 완충재 위 쿠션과 네임 리본" class="pkphoto">
+        <figcaption><b>02 · 열었을 때</b>핑크 종이 완충재 위에 쿠션이 쏙 고정. 네임 리본과 메시지 카드 함께</figcaption>
+      </figure>
+    </div>
+
+    <div class="pkinfo">
+      <div class="rv">
+        <span class="cap">In the Box</span>
+        <ul class="giftlist" style="margin-top:12px">
+          <li><b>화이트 앤티크 박스</b><span>클래식 액자 테두리 + 실버 펄 MDY 로고</span></li>
+          <li><b>핑크 종이 완충재</b><span>폭신한 연핑크 크링클 페이퍼</span></li>
+          <li><b>쿠션 고정 트레이</b><span>배송 중에 쿠션이 움직이지 않게 꽉 잡아줘요</span></li>
+          <li><b>메시지 카드</b><span>하고 싶은 말을 앤티크 카드에 담아 드려요</span></li>
+        </ul>
+      </div>
+      <div class="rv namebox">
+        <span class="cap">Option · Name Ribbon</span>
+        <h3>내 이름이 새겨진 리본 <small>+ ₩3,000</small></h3>
+        <p>영어 이름을 적으면 쿠션을 감싼 아이보리 새틴 리본에 새겨 드려요.</p>
+        <div class="namein"><input id="giftNamePreview" maxlength="12" placeholder="Youn woo" autocomplete="off"></div>
+        <div>리본 미리보기 · <span class="ribprev" id="ribbonName">Youn woo</span></div>
+        <button class="btn" onclick="giftOrder()">네임 리본 추가해서 주문하기</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -467,6 +574,13 @@
       <label>연락처</label><input name="phone" required placeholder="010-0000-0000" pattern="[0-9\-]{10,13}">
       <label>배송 주소</label><input name="addr" required placeholder="서울시 ○○구 ○○로 00">
       <label>입금자명 (받는 분과 다를 때만)</label><input name="payer" placeholder="비워두면 받는 분 이름으로 해요">
+      <div class="giftopt">
+        <label class="chk"><input type="checkbox" id="giftOn"> 네임 리본 서비스 <b style="font-weight:500;margin-left:auto">+₩3,000</b></label>
+        <div class="giftmore" id="giftMore">
+          <label>리본에 새길 영어 이름</label><input name="giftName" id="giftName" maxlength="12" placeholder="Yeonwoo">
+          <label>메시지 카드 (60자까지)</label><textarea name="giftMsg" id="giftMsg" maxlength="60" placeholder="생일 축하해! 오늘도 너가 너의 뮤즈야 💗"></textarea>
+        </div>
+      </div>
       <label>할인 코드</label><input name="code" id="codeInput" placeholder="예: MUSE10">
       <label>결제 수단</label>
       <div class="pay"><div class="on">무통장 계좌이체</div><div class="off">카드 (준비 중)</div></div>
@@ -530,13 +644,14 @@ function closeAll(){ $('dim').style.display='none'; $('drawer').classList.remove
 function calc(){
   const s = subtotal(), c = CODES[($('codeInput').value||'').trim().toUpperCase()];
   let dc = 0; if(c) dc = c.rate ? Math.round(s*c.rate/10)*10 : Math.min(c.won, s);
-  const sh = shipping(s); return {s, dc, sh, total:s-dc+sh, c};
+  const sh = shipping(s); const gw = $('giftOn') && $('giftOn').checked ? 3000 : 0; return {s, dc, sh, gw, total:s-dc+sh+gw, c};
 }
 function renderFormSum(){
   const k = calc();
   $('formSum').innerHTML = `<div class="r"><span>상품 금액</span><span>${won(k.s)}</span></div>
    <div class="r"><span>할인 ${k.c?'· '+k.c.label:''}</span><span>${k.dc?'−'+won(k.dc):'-'}</span></div>
    <div class="r"><span>배송비</span><span>${k.sh?won(k.sh):'무료'}</span></div>
+   ${k.gw?`<div class="r"><span>네임 리본 서비스</span><span>+${won(k.gw)}</span></div>`:''}
    <div class="r" style="font-weight:500;font-size:16px;border-top:1px solid var(--line);margin-top:6px;padding-top:10px"><span>최종 결제 금액</span><span>${won(k.total)}</span></div>`;
 }
 function openCheckout(){
@@ -570,6 +685,7 @@ function placeOrder(e){
       <div class="r"><span>입금자명</span><span>${payer}</span></div>
       <div class="r"><span>입금 기한</span><span>${due.getMonth()+1}월 ${due.getDate()}일 ${p2(due.getHours())}:${p2(due.getMinutes())}까지</span></div>
       <div class="r"><span>배송지</span><span style="text-align:right;max-width:62%">${esc(f.get('addr'))}</span></div>
+      ${k.gw?`<div class="r"><span>네임 리본</span><span style="text-align:right;max-width:62%">네임 리본 “${esc(f.get('giftName')||'')}”${f.get('giftMsg')?'<br><span style="color:var(--muted)">카드: '+esc(f.get('giftMsg'))+'</span>':''}</span></div>`:''}
     </div>
     <p class="note">· 입금자명과 금액이 같아야 자동으로 확인돼요.<br>· 기한 안에 입금하지 않으면 주문이 자동 취소돼요.<br>· 입금이 확인되면 문자로 알려드리고 1~2일 안에 출발해요.<br>· 수업 과제용 가상 결제 화면이에요. 실제로 입금하지 마세요.</p>
     <button class="btn" style="margin-top:20px" onclick="finish()">확인</button>`;
@@ -578,7 +694,29 @@ function copyAcct(){
   const t = '뮤즈은행 1030-2025-1727 (주)뮤즈드유';
   (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(()=>toast('계좌번호를 복사했어요'), ()=>toast(t));
 }
-function finish(){ cart=[]; save(); $('orderForm').reset(); closeAll(); toast('주문해 주셔서 감사해요'); }
+function finish(){ cart=[]; save(); $('orderForm').reset(); $('giftMore').classList.remove('show'); closeAll(); toast('주문해 주셔서 감사해요'); }
+
+
+/* 네임 리본 선물 포장 */
+const cleanName = v => v.replace(/[^A-Za-z .'-]/g,'').slice(0,12);
+function drawRibbon(v){ $('ribbonName').textContent = (v||'').trim() || 'Youn woo'; }
+$('giftNamePreview').addEventListener('input', e=>{
+  const v = cleanName(e.target.value); if(v!==e.target.value) e.target.value = v; drawRibbon(v);
+});
+
+$('giftOn').addEventListener('change', e=>{
+  $('giftMore').classList.toggle('show', e.target.checked);
+  $('giftName').required = e.target.checked;
+  if(e.target.checked && !$('giftName').value) $('giftName').value = $('giftNamePreview').value;
+  renderFormSum();
+});
+$('giftName').addEventListener('input', e=>{ const v = cleanName(e.target.value); if(v!==e.target.value) e.target.value = v; });
+function giftOrder(){
+  if(!cart.length){ addCart(true); }
+  openCheckout();
+  $('giftOn').checked = true; $('giftOn').dispatchEvent(new Event('change'));
+}
+drawRibbon('');
 
 /* 유입 경로 */
 const ROUTES = {

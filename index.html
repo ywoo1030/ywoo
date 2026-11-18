@@ -278,6 +278,14 @@
   .namebox h3 small{font-size:14px;color:var(--muted);margin-left:6px}
   .namebox p{font-size:14px;color:var(--sub);margin-bottom:16px}
   @media(max-width:900px){ .pkrow,.pkinfo{grid-template-columns:1fr} }
+
+  .zoomable{cursor:zoom-in;transition:transform .25s}
+  .zoomable:hover{transform:scale(1.015)}
+  .lightbox{position:fixed;inset:0;z-index:90;background:rgba(40,20,45,.82);display:none;align-items:center;justify-content:center;padding:4vh 4vw;cursor:zoom-out}
+  .lightbox.open{display:flex;animation:lbIn .25s ease}
+  .lightbox img{max-width:100%;max-height:92vh;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+  .lightbox .lbx{position:absolute;top:18px;right:24px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.9);font-size:24px;line-height:44px;color:#3a1a2b;cursor:pointer}
+  @keyframes lbIn{from{opacity:0}to{opacity:1}}
 </style>
 </head>
 <body>
@@ -362,7 +370,7 @@
         </div>
       </div>
     </div>
-    <div class="pimg rv"><img src="cushion.jpg" alt="THE DREAMING CUSHION"></div>
+    <div class="pimg rv"><img src="cushion.jpg" alt="THE DREAMING CUSHION" class="zoomable"></div>
   </div>
 </section>
 
@@ -400,13 +408,13 @@
     <div class="pkrow">
       <!-- 닫힌 박스 -->
       <figure class="pkcard rv">
-        <img src="box_closed.jpg" alt="뮤즈 드 유 화이트 앤티크 박스" class="pkphoto">
+        <img src="box_closed.jpg" alt="뮤즈 드 유 화이트 앤티크 박스" class="pkphoto zoomable">
         <figcaption><b>01 · 받았을 때</b>리본 없이 깔끔한 화이트 앤티크 박스. 가운데에 실버 펄 박으로 찍은 MDY 로고</figcaption>
       </figure>
 
       <!-- 열린 박스 -->
       <figure class="pkcard rv">
-        <img src="box_open.jpg" alt="박스를 연 모습: 핑크 완충재 위 쿠션과 네임 리본" class="pkphoto">
+        <img src="box_open.jpg" alt="박스를 연 모습: 핑크 완충재 위 쿠션과 네임 리본" class="pkphoto zoomable">
         <figcaption><b>02 · 열었을 때</b>핑크 종이 완충재 위에 쿠션이 쏙 고정. 네임 리본과 메시지 카드 함께</figcaption>
       </figure>
     </div>
@@ -591,6 +599,7 @@
   <div id="doneWrap" style="display:none"></div>
 </div>
 
+<div class="lightbox" id="lightbox" onclick="closeLB()"><button class="lbx" aria-label="닫기">×</button><img id="lbImg" alt=""></div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -717,6 +726,14 @@ function giftOrder(){
   $('giftOn').checked = true; $('giftOn').dispatchEvent(new Event('change'));
 }
 drawRibbon('');
+
+
+/* 사진 크게 보기 */
+document.querySelectorAll('.zoomable').forEach(img=>img.addEventListener('click',()=>{
+  $('lbImg').src = img.src; $('lbImg').alt = img.alt; $('lightbox').classList.add('open'); document.body.style.overflow='hidden';
+}));
+function closeLB(){ $('lightbox').classList.remove('open'); document.body.style.overflow=''; }
+addEventListener('keydown', e=>{ if(e.key==='Escape') closeLB(); });
 
 /* 유입 경로 */
 const ROUTES = {
